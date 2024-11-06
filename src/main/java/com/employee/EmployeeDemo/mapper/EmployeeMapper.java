@@ -18,4 +18,6 @@ public interface EmployeeMapper
     void updateEmployee(EmployeeEntity employee);
 
     void deleteEmployee(Long employeeId);
+
+    Long getNextId() ;
 }
