@@ -4,8 +4,8 @@
 <mapper namespace="com.employee.EmployeeDemo.mapper.EmployeeMapper">
 
     <insert id="insertEmployee">
-        INSERT INTO employees (birth_date, first_name, last_name, gender, hire_date)
-        VALUES (#{birthDate}, #{firstName}, #{lastName}, #{gender}, #{hireDate})
+        INSERT INTO employees (emp_no, birth_date, first_name, last_name, gender, hire_date)
+        VALUES (#{employeeId}, #{birthDate}, #{firstName}, #{lastName}, #{gender}, #{hireDate})
     </insert>
 
     <update id="updateEmployee">
@@ -26,6 +26,11 @@
         SELECT emp_no, birth_date, first_name, last_name, gender, hire_date
         FROM employees
     </select>
+
+    <select id="getNextId" resultType="long">
+        SELECT COALESCE(MAX(emp_no), 0) + 1 FROM employees
+    </select>
+
 
     <select id="getEmployeeById" resultMap="EmployeeDTOResultMap">
         SELECT emp_no, birth_date, first_name, last_name, gender, hire_date

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 @Data
 @NoArgsConstructor
@@ -17,11 +18,11 @@ public class EmployeeDTO
 {
     private Long employeeId;
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private ZonedDateTime birthDate;
+    private LocalDate birthDate;
     private String firstName;
     private String lastName;
     private String gender;
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private ZonedDateTime hireDate;
+    private LocalDate hireDate;
 
 }

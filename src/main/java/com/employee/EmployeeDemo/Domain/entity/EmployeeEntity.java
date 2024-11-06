@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
 @Data
@@ -23,7 +24,7 @@ public class EmployeeEntity
     private Long employeeId;
 
     @Column(name = "birth_date")
-    private ZonedDateTime birthDate;
+    private LocalDate birthDate;
 
     @Column(name = "first_name")
     private String firstName;
@@ -35,6 +36,6 @@ public class EmployeeEntity
     private String gender;
 
     @Column(name = "hire_date")
-    private ZonedDateTime hireDate;
+    private LocalDate hireDate;
 
 }
