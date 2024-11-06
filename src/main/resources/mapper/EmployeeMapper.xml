@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//MyBatis//DTD MyBatis Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.employee.EmployeeDemo.mapper.EmployeeMapper">
+
+    <insert id="insertEmployee">
+        INSERT INTO employees (birth_date, first_name, last_name, gender, hire_date)
+        VALUES (#{birthDate}, #{firstName}, #{lastName}, #{gender}, #{hireDate})
+    </insert>
+
+    <update id="updateEmployee">
+        UPDATE employees
+        SET birth_date = #{birthDate},
+        first_name = #{firstName},
+        last_name = #{lastName},
+        gender = #{gender},
+        hire_date = #{hireDate}
+        WHERE emp_no = #{employeeId}
+    </update>
+
+    <delete id="deleteEmployee">
+        DELETE FROM employees WHERE emp_no = #{employeeId}
+    </delete>
+
+    <select id="getAllEmployees" resultMap="EmployeeDTOResultMap">
+        SELECT emp_no, birth_date, first_name, last_name, gender, hire_date
+        FROM employees
+    </select>
+
+    <select id="getEmployeeById" resultMap="EmployeeDTOResultMap">
+        SELECT emp_no, birth_date, first_name, last_name, gender, hire_date
+        FROM employees
+        WHERE emp_no = #{employeeId}
+    </select>
+
+
+    <resultMap id="EmployeeDTOResultMap" type="com.employee.EmployeeDemo.Domain.dto.EmployeeDTO">
+        <result property="employeeId" column="emp_no"/>
+        <result property="birthDate" column="birth_date"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="gender" column="gender"/>
+        <result property="hireDate" column="hire_date"/>
+    </resultMap>
+
+</mapper>
